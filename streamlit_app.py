@@ -21,10 +21,13 @@ REPLICATE_MODEL_FACE = st.secrets["REPLICATE_MODEL_FACE"]
 generated_images_placeholder = st.empty()
 gallery_placeholder = st.empty()
 
+
+# Predefined input data for the model
 # Predefined input data for the model
 PREDEFINED_INPUT = {
-    "prompt": "Create a pixelated glitch art of a close-up, based on the uploaded image, in the style of a Video game with radioactive dreams and a screencapture effect, using Bryce 3D.",
-    "instant_id_strength": 0.8
+    "prompt": "Low poly pixelated of close-up of uploaded image, ps2 playstation psx gamecube game gta head 3d --style ddCHhSumaNyOrL1Q",
+    "instant_id_strength": 0.8,
+    "neg_prompt": "boring"  # Corrected indentation here
 }
 
 def configure_sidebar() -> None:
@@ -95,6 +98,7 @@ def main_page(submitted: bool, style: str, uploaded_image: Any) -> None:
                                 "image": image_uri,
                                 "style": style,
                                 "prompt": PREDEFINED_INPUT["prompt"],
+                                "neg_prompt": PREDEFINED_INPUT["neg_prompt"],
                                 "instant_id_strength": PREDEFINED_INPUT["instant_id_strength"]
                             }
                         )
