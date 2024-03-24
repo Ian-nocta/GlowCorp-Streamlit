@@ -39,7 +39,7 @@ def configure_sidebar() -> None:
             st.info("**Yo fam! Start here ↓**", icon="👋🏾")
             with st.expander(":rainbow[**Create your character**]"):
                 # Advanced Settings (for the curious minds!)
-                style = st.selectbox('Choose an image style', ("PS2", "Pixelated", "Clay", "Emoji"))
+                style = st.selectbox('Choose an image style', ("PS2", "Pixelated", "Clay", "Emoji", "3D"))
                 uploaded_image = st.file_uploader("Upload an image file", type=["jpg", "jpeg", "png", "webp"])
 
             # The Big Red "Submit" Button!
@@ -68,6 +68,8 @@ def main_page(submitted: bool, style: str, uploaded_image: Any) -> None:
     """
     if style == "PS2":
         style = "Video game"
+    if style == "Pixelated":  # Corrected indentation here
+        style = "Pixels"
 
     if submitted:
         with st.status('👩🏾‍🍳 Whipping up your character...', expanded=True) as status:
